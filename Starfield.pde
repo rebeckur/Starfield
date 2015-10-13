@@ -1,4 +1,5 @@
 Particle [] group;
+PImage image;
 
 void setup()
 {
@@ -12,6 +13,7 @@ void setup()
 	}
 	group[0] = new OddballParticle();
 	group[1] = new JumboParticle();
+	image = loadImage("onigiri.png");
 }
 void draw()
 {
@@ -26,15 +28,15 @@ class NormalParticle implements Particle
 {
 	double x, y, speed, angle;
 	int particleColor;
-	int cR = (int)(Math.random()*50)+50;
-	int cG = (int)(Math.random()*100)+70;
-	int cB = (int)(Math.random()*100)+156;
+	int cR = (int)(Math.random()*150)+20;
+	int cG = (int)(Math.random()*150)+100;
+	int cB = (int)(Math.random()*100)+155;
 
 	NormalParticle()
 	{
 		x = 300.00;
 		y = 300.00;
-		speed = (Math.random()*4)+1;
+		speed = (Math.random()*3)+1;
 		angle = Math.random()*2*Math.PI;
 		particleColor = color(cR,cG,cB);
 	}
@@ -44,14 +46,17 @@ class NormalParticle implements Particle
 		x = x + Math.cos(angle)*speed;
 		y = y + Math.sin(angle)*speed;
 		//System.out.println("x: " + x + " y: " + y);
-		if (x%2 >= 1)
+		if (x%2 == 0)
 		{
 			angle+=10;
 		}
+
 		if (mousePressed)
 		{
 			x = mouseX;
 			y = mouseY;
+			angle = Math.random()*2*Math.PI;
+			speed = (Math.random()*3)+1;
 		}
 	}
 
@@ -96,12 +101,12 @@ class OddballParticle implements Particle
 			directionX = -1;
 		}
 
-		if (y < 0)
+		if (y < -10)
 		{
 			directionY = 1;
 		}
 
-		if (y > 590)
+		if (y > 570)
 		{
 			directionY = -1;
 		}
@@ -112,10 +117,10 @@ class OddballParticle implements Particle
 
 	void show()
 	{
-		fill(particleColor);
-		rect((float)x, (float)y, 20, 20);
+		image(image, (float)x, (float)y, 40, 60);
+		fill(255);
 		textSize(20);
-		text("Me weird tofu. Tofu iz gud 4 u.", (float)x-120, (float)y-10);
+		text("Weeee", (float)x-5, (float)y);
 	}
 }
 
