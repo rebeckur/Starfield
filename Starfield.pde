@@ -1,5 +1,5 @@
 Particle [] group;
-PImage image;
+PImage pic;
 
 void setup()
 {
@@ -13,7 +13,7 @@ void setup()
 	}
 	group[0] = new OddballParticle();
 	group[1] = new JumboParticle();
-	image = loadImage("onigiri.png");
+	pic = loadImage("onigiri.png");
 }
 void draw()
 {
@@ -117,7 +117,7 @@ class OddballParticle implements Particle
 
 	void show()
 	{
-		image(image, (float)x, (float)y, 40, 60);
+		image(pic, (float)x, (float)y, 40, 60);
 		fill(255);
 		textSize(20);
 		text("Weeee", (float)x-5, (float)y);
