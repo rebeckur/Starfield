@@ -28,8 +28,8 @@ class NormalParticle implements Particle
 {
 	double x, y, speed, angle;
 	int particleColor;
-	double mousePosX = 300.0;
-	double mousePosY = 300.0;
+	double mousePosX;
+	double mousePosY;
 	int cR = (int)(Math.random()*50)+50;
 	int cG = (int)(Math.random()*150)+100;
 	int cB = (int)(Math.random()*100)+155;
@@ -40,6 +40,8 @@ class NormalParticle implements Particle
 		y = mousePosY;
 		speed = (Math.random()*3)+1;
 		angle = Math.random()*2*Math.PI;
+		mousePosX = 300.0;
+		mousePosY = 300.0;
 		particleColor = color(cR,cG,cB);
 	}
 
